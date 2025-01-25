@@ -1,0 +1,62 @@
+.task-card {
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  align-self: center;
+  color: darkblue;
+}
+
+.card-title.completed {
+  text-decoration: line-through;
+  color: #757575;
+}
+
+.menu-button {
+  margin-left: auto;
+}
+
+.edit-section {
+  display: block;
+}
+
+.submit-btn {
+  background-color: darkgreen;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: gray;
+  color: white;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+}
+
+.time-text {
+  color: rgb(123, 123, 241);
+}
+
+.disabled-card-content {
+  opacity: 0.5;
+  pointer-events: none;
+  background-color: lightgray;
+  color: silver;
+}
+
+.bloked-msg {
+  color: darkred;
+  background-color: rgb(216, 162, 162);
+}

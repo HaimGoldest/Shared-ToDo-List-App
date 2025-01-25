@@ -1,0 +1,22 @@
+<h2 class="current-user" *ngIf="username">Currene user: {{ username }}</h2>
+
+<div class="add-task-form">
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="newTask.title" placeholder="Task title" />
+  </mat-form-field>
+  <button mat-button (click)="onAddTask()" [disabled]="!newTask.title">
+    Add Task
+  </button>
+</div>
+
+<div class="task-list">
+  <app-task-item
+    *ngFor="let task of tasks; let i = index"
+    [task]="task"
+    [index]="i"
+    [activeEditModeIndex]="activeEditModeIndex"
+    (editModeOpened)="onEditModeOpened($event)"
+    (updateTask)="onUpdateTask($event)"
+    (deleteTask)="onDeleteTask($event)"
+  ></app-task-item>
+</div>

@@ -1,0 +1,17 @@
+.current-user {
+  font-size: 1rem;
+  color: rgb(173, 121, 25);
+  align-items: center;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

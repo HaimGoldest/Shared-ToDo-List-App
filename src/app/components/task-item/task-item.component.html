@@ -1,0 +1,81 @@
+<mat-card
+  appearance="outlined"
+  class="task-card"
+  (contextmenu)="onStartEditMode($event)"
+>
+  <div
+    class="mat-card-content"
+    [ngClass]="{ 'disabled-card-content': isLocked }"
+  >
+    <div class="task-item">
+      <div>
+        <mat-checkbox
+          [checked]="task.completed"
+          (change)="onToggleCompletion()"
+        ></mat-checkbox>
+      </div>
+
+      <div class="card-title" [class.completed]="task.completed">
+        {{ task.title }}
+      </div>
+
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Icon-button with a menu"
+        class="menu-button"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onStartEditMode()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="onDelete()">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </div>
+
+    <div class="edit-section" *ngIf="index === activeEditModeIndex">
+      <mat-form-field class="full-width">
+        <mat-label>New Task Title</mat-label>
+        <input matInput #newTitle placeholder="New Task Title" />
+      </mat-form-field>
+      <div class="button-container">
+        <button
+          mat-raised-button
+          class="submit-btn"
+          (click)="onEditSubmit(newTitle.value)"
+        >
+          Save
+        </button>
+        <button mat-raised-button class="cancel-btn" (click)="onCancelEdit()">
+          Cancel
+        </button>
+        <button mat-raised-button class="delete-btn" (click)="onDelete()">
+          Delete
+        </button>
+      </div>
+    </div>
+    <div>
+      <mat-card-subtitle class="time-text">
+        Created at:
+        {{ task.createdAt | date : "dd/MM/yy" }} -
+        {{ task.createdAt | date : "HH:mm:ss" }}
+        (by {{ this.task.createdBy }})
+      </mat-card-subtitle>
+      <mat-card-subtitle *ngIf="wasUpdated" class="time-text">
+        Last updated at:
+        {{ task.updatedAt | date : "dd/MM/yy" }} -
+        {{ task.updatedAt | date : "HH:mm:ss" }}
+        (by {{ this.task.updatedBy }})
+      </mat-card-subtitle>
+    </div>
+  </div>
+  <div *ngIf="isLocked" class="bloked-msg">
+    <p>This task is bloked by another user.</p>
+  </div>
+</mat-card>
