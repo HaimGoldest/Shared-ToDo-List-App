@@ -16,7 +16,7 @@ git clone https://github.com/HaimGoldest/Shared-ToDo-List-App.git
 2. Open the Shared-ToDo-List-API folder:
 
 ```bash
-cd Shared-ToDo-List-API
+cd Shared-ToDo-List-App
 ```
 
 3. Install dependencies:
